@@ -44,7 +44,7 @@ Report issues and see the code on `GitHub <https://github.com/theislab/cellrank>
    :maxdepth: 1
    :hidden:
 
-   pancreas
+   pancreas_basic
 
 .. |PyPI| image:: https://img.shields.io/pypi/v/cellrank.svg
     :target: https://img.shields.io/pypi/v/cellrank
