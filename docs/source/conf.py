@@ -4,7 +4,6 @@ import sys
 
 HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE.parent.parent))
-import cellrank  # noqa
 
 # Configuration file for the Sphinx documentation builder.
 #
@@ -48,6 +47,8 @@ source_suffix = [".rst", ".ipynb"]
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["**.ipynb_checkpoints"]
+
+master_doc = "index"
 
 
 # -- Options for HTML output -------------------------------------------------
