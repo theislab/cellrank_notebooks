@@ -35,7 +35,7 @@ Report issues and see the code on `GitHub <https://github.com/theislab/cellrank>
     :hidden:
 
     Installation <https://cellrank.readthedocs.io/en/latest/installation.html>
-    Api <https://cellrank.readthedocs.io/en/latest/api.html>
+    API <https://cellrank.readthedocs.io/en/latest/api.html>
     Classes <https://cellrank.readthedocs.io/en/latest/classes.html>
     references
 
