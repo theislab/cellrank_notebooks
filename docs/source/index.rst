@@ -49,5 +49,4 @@ Report issues and see the code on `GitHub <https://github.com/theislab/cellrank>
 .. |Travis| image:: https://travis-ci.org/theislab/cellrank.svg?branch=master
     :target: https://travis-ci.org/theislab/cellrank
 
-.. |License| image:: https://img.shields.io/pypi/v/cellrank.svg
-    :target: https://img.shields.io/github/license/theislab/cellrank
+.. |License| image:: https://img.shields.io/github/license/theislab/cellrank
