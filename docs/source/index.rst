@@ -34,9 +34,9 @@ Report issues and see the code on `GitHub <https://github.com/theislab/cellrank>
     :maxdepth: 1
     :hidden:
 
-    Installation <https://cellrank.readthedocs.io/installation.html>
-    Api <https://cellrank.readthedocs.io/api.html>
-    Classes <https://cellrank.readthedocs.io/classes.html>
+    Installation <https://cellrank.readthedocs.io/en/latest/installation.html>
+    Api <https://cellrank.readthedocs.io/en/latest/api.html>
+    Classes <https://cellrank.readthedocs.io/en/latest/classes.html>
     references
 
 .. toctree::
@@ -46,10 +46,7 @@ Report issues and see the code on `GitHub <https://github.com/theislab/cellrank>
 
    pancreas_basic
 
-.. |PyPI| image:: https://img.shields.io/pypi/v/cellrank.svg
-    :target: https://img.shields.io/pypi/v/cellrank
-
-.. |Travis| image:: https://travis-ci.com/theislab/cellrank.svg?token=UqaQZpSKCK4qZNfu1sqq&branch=master
+.. |Travis| image:: https://travis-ci.org/theislab/cellrank.svg?branch=master
     :target: https://travis-ci.org/theislab/cellrank
 
 .. |License| image:: https://img.shields.io/pypi/v/cellrank.svg
