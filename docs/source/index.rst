@@ -38,10 +38,10 @@ Report issues and see the code on `GitHub <https://github.com/theislab/cellrank>
     :maxdepth: 2
     :hidden:
 
-    installation
-    api
-    classes
-    references
+    Installation <https://cellrank.readthedocs.io/en/latest/installation.html>
+    API <https://cellrank.readthedocs.io/en/latest/api.html>
+    Classes <https://cellrank.readthedocs.io/en/latest/classes.html>
+    References <https://cellrank.readthedocs.io/en/latest/references.html>
 
 .. toctree::
    :caption: Tutorials
