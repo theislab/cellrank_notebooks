@@ -9,8 +9,12 @@
 CellRank - Probabilistic Trajectory Inference based on RNA Velocity
 ===================================================================
 
+.. image:: https://raw.githubusercontent.com/theislab/cellrank/master/resources/images/index_figure.png
+   :width: 600px
+   :align: center
+
 **CellRank** is a toolkit to uncover cellular development based on scRNA-seq
-data and RNA Velocity, see [Manno18]_ and [Bergen19]_.
+data with RNA Velocity annotation, see [Manno18]_ and [Bergen19]_.
 
 CellRank utilises the time derivative of gene expression given by RNA Velocity
 to construct a Markov Chain. The information given by RNA Velocity is combined
@@ -31,20 +35,21 @@ Report issues and see the code on `GitHub <https://github.com/theislab/cellrank>
 
 .. toctree::
     :caption: General
-    :maxdepth: 1
+    :maxdepth: 2
     :hidden:
 
-    Installation <https://cellrank.readthedocs.io/en/latest/installation.html>
-    API <https://cellrank.readthedocs.io/en/latest/api.html>
-    Classes <https://cellrank.readthedocs.io/en/latest/classes.html>
+    installation
+    api
+    classes
     references
 
 .. toctree::
    :caption: Tutorials
-   :maxdepth: 1
+   :maxdepth: 2
    :hidden:
 
-   pancreas_basic
+   Pancreas <https://cellrank-notebooks.readthedocs.io/en/latest/pancreas_basic.html>
+
 
 .. |Travis| image:: https://travis-ci.org/theislab/cellrank.svg?branch=master
     :target: https://travis-ci.org/theislab/cellrank
