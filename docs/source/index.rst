@@ -48,7 +48,8 @@ Report issues and see the code on `GitHub <https://github.com/theislab/cellrank>
    :maxdepth: 2
    :hidden:
 
-   Pancreas <https://cellrank-notebooks.readthedocs.io/en/latest/pancreas_basic.html>
+   pancreas_basic
+   pancreas_advanced
 
 
 .. |Travis| image:: https://travis-ci.org/theislab/cellrank.svg?branch=master

@@ -108,7 +108,6 @@ venv.bak/
 **.idea/
 
 # repo-specific folders and files
-**/data
 **/cache
 **/write
 **/figures
