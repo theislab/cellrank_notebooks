@@ -58,6 +58,7 @@ master_doc = "index"
 #
 
 pygments_style = "sphinx"
+html_scaled_image_link = False
 
 
 # Add any paths that contain custom static files (such as style sheets) here,
