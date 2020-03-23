@@ -20,6 +20,7 @@ sys.path.insert(0, str(HERE.parent.parent))
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
+needs_sphinx = "2.0"
 
 
 # -- Project information -----------------------------------------------------
@@ -74,7 +75,7 @@ html_context = dict(
     github_version="master",  # Version
     conf_py_path="/docs/source/",
 )  # Path in the checkout to the docs root
-# html_show_sphinx = False
+html_show_sphinx = False
 
 
 def setup(app):
