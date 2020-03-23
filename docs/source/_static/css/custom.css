@@ -46,7 +46,10 @@
 }
 
 
-/* Parameter lists */
+.output_area > img {
+    width: auto !important;
+    height: auto !important;
+}
 
 
 /* Mimick rubric style used for other headings */
