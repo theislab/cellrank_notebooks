@@ -1,4 +1,4 @@
-|Travis| |Docs| |Codecov| |License|
+|Travis| |Docs| |Binder| |Codecov| |License|
 
 
 CellRank - Probabilistic Lineage Assignment using RNA Velocity
@@ -40,6 +40,9 @@ between the `Theislab`_ and the `Peerlab`_.
     :target: https://travis-ci.org/theislab/cellrank
 
 .. |Docs|  image:: https://img.shields.io/readthedocs/cellrank
+
+.. |Binder| image:: https://mybinder.org/badge_logo.svg
+    :target: https://mybinder.org/v2/gh/theislab/cellrank_notebooks/master?filepath=docs%2Fsource%2Fpancreas_basic.ipynb
 
 .. |Codecov| image:: https://codecov.io/gh/theislab/cellrank/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/theislab/cellrank
