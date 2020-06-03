@@ -37,7 +37,8 @@ author = "Marius Lange, Michal Klein, Juan Luis Restrepo Lopez"
 # ones.
 extensions = [
     "nbsphinx",
-    "sphinx_copybutton"
+    "sphinx_copybutton",
+    "sphinx_last_updated_by_git"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -49,7 +50,37 @@ source_suffix = [".rst", ".ipynb"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["**.ipynb_checkpoints"]
 
+nbsphinx_execute_arguments = [
+    "--InlineBackend.figure_formats={'svg', 'pdf'}",
+    "--InlineBackend.rc={'figure.dpi': 96}",
+]
+
+nbsphinx_prolog = r"""
+{% set docname = 'docs/source/' + env.doc2path(env.docname, base=None) %}
+.. raw:: html
+
+    <div class="note">
+      Interactive version
+      <a href="https://mybinder.org/v2/gh/theislab/cellrank_notebooks/{{ env.config.release|e }}?filepath={{ docname|e }}"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a>
+    </div>
+"""
+
 master_doc = "index"
+
+# -- Get version information and date from Git ----------------------------
+
+try:
+    from subprocess import check_output
+    release = check_output(['git', 'describe', '--tags', '--always'])
+    release = release.decode().strip()
+    today = check_output(['git', 'show', '-s', '--format=%ad', '--date=short'])
+    today = today.decode().strip()
+except Exception:
+    release = '<unknown>'
+    today = '<unknown date>'
+
+#release = "master"
+version = release
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -72,11 +103,11 @@ html_context = dict(
     display_github=True,  # Integrate GitHub
     github_user="theislab",  # Username
     github_repo="cellrank_notebooks",  # Repo name
-    github_version="master",  # Version
+    github_version=version,  # Version
     conf_py_path="/docs/source/",
 )  # Path in the checkout to the docs root
 html_show_sphinx = False
 
 
 def setup(app):
-    app.add_stylesheet("css/custom.css")
+    app.add_css_file("css/custom.css")
