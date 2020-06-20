@@ -114,5 +114,5 @@ venv.bak/
 **paths.py
 **/References
 **/reports
-docs/source/datasets
 cached_files/
+tutorials/datasets/
