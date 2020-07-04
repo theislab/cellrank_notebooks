@@ -1,0 +1,35 @@
+language: python
+
+python: "3.6"
+
+os: linux
+
+dist: bionic  # Ubuntu 18.04
+
+env:
+  global:
+    secure: L65PpnyHu2I/LLeVu/AlksNYx4vxke15ofhLIyLYpbZfWlvcvQt/wLg5JRvzC5EYb+ruGdLsT594F11UoFdR8dwGgzz1XOsh2vrO0hXPhjeiaCMJgT8K9jvFE1u2iS3hQr4cmaFvXki5OJ2JgI9iCA5g+pW3onaM+ENWSvjPL47AQnDla+G171b2VcmyITncBjkIFPL5JPrnpngRlEXLK5a2hPhMj0Mm2kAgAZg21xpkxDqAjTCNaTuCItmw3ssY+E6JFvIre5n+mPOD89TFB98E9/wlM2k+24FdYzp7tYTi9XYEuPu/v9ECNTz/tv/2kl8YtVHzGLJeBYQPXmywzr/Sm/2qQMgYzLLOur7nEx62GC0Tc/2xx1c5b0gKXnPfgPRoSksOn+YpSD0pZYt3uIiLu0ssamfDxDWZ/xwn70semC3o+M1X0xApEilZxqXm9rbtzrXoHm3lHkjZpYq0F9l1GWM1g97eq5Q9j3HM9zE+Xq4KVJFLxDqGjntg/qYzdWOaws9b2uQi5RuiCx+EAxu5lTU81S2gGrAYtfTug6sVJqHqxgEroqb3XPtYKgK8kCQfo4wf7EuBUdRi/AdqBbRh2VhPbgSIbhXwvC1FS0fC1tf5r/8PkLJrS5EIKrmHBnLG0+EhRl7Xw7K8k13hwHt0RxUZh/j5W0gFXLY77S4=
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+  - sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/"
+  - sudo apt-get -y install libopenblas-base
+  - sudo apt-get -y install r-base r-base-dev r-cran-mgcv
+  - "export R_VERSION=`R --version | head -n 1 | cut -d' ' -f3-4`"
+  - echo "Running R $R_VERSION"
+  - pip install -r requirements.txt
+  - python -m ipykernel install --name cellrank --user
+
+install:
+  - git clone https://github.com/theislab/cellrank
+  - cd cellrank
+  - pip install -e .[test]
+  - python-vendorize
+  - cd ..
+
+script:
+  - travis_wait 30 pytest
+
+after_success:
+  - curl -X POST -d "branches=master" -d "token=$RTD_TOKEN" https://readthedocs.org/api/v2/webhook/cellrank/125510/
