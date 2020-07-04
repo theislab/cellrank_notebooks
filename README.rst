@@ -1,5 +1,4 @@
-|PyPI| |Bioconda| |Travis| |Docs| |Binder| |Codecov|
-|Notebooks|
+|PyPI| |Bioconda| |Travis| |Notebooks| |Docs| |Binder| |Codecov|
 
 
 CellRank - Probabilistic Fate Mapping using RNA Velocity
