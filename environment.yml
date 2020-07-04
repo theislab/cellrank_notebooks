@@ -1,14 +1,14 @@
-name: cellrank2
+name: cellrank
 channels:
   - conda-forge
 dependencies:
   - python
   - pip
-  - jupyter
+  - notebook
   - python-igraph
   - matplotlib>=3.2.1
   - pip:
-    - git+https://github.com/theislab/cellrank
+    - cellrank>=1.0.0
     - scvelo>=0.2.0
     - anndata>=0.7.1
     - louvain>=0.6,!=0.6.2
