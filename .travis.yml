@@ -8,18 +8,24 @@ dist: bionic  # Ubuntu 18.04
 
 env:
   global:
-    secure: rhs+gdK/rr79hf2TOzB5V6yazAMXLDp4XjYLxtkfY4u3V/gsE7OzRaxGOEEvBouDJDOja06c2Kq8rZWE5DmRZyunnSkFjYhqGQnNDkzzf5kGy+R2f1WwaY45V+bmhMoeavm3JVLrkbKRprBp99u+KYozi6hq0KBj2LHNQOeDfk6T+aPQoJdM+c1aSU4Wn3jzfm/6c+AbcJC6urOZTCsiD8h7I/eXHy9vl5dxnN+4ELKeJbK89AEP3DTLAaw+pdcJnMnb4AiFxP033vAwt+5VT+aKRnoKwa+jUnfIvXVUy1BebpIC6LQ1T/YBMX+RWkSsSriIPBfg341JcXQi+9mfYZkw4OjLBJn04WTcagH07VEyGcdFvgmRJtAq3UQny+LJzYmzlAA2GFUxql5ZAWqry2VlPQmLyMNwe1e58IKiTyQe9EGli/FrrhXMpgA7/dr7JZMaxOa/38ayuCwephMy6n6y/67sfD3SvxfnBFHGTKqXLKxM6jCiAO1OqKoayoRUbJSQdaYcON/SuIuHhvKxii6JAFiJGzM4Z9xfaZsdDhGmmbjH0jptfxtFJ48HMm1+t644mK/NY/DEwv7rzYx2IO7clunA4HDP2o/y+NPYsHka3dkY/ayYP5boOy5Exl4rk4vuUAc2h52pfsJ0SNw4dp3L6KjEb+m8uSSntj7YTz4=
+    secure: "nsXrAR+koQ5SQyJk+GCsLM4t7tGpaMU/fMXkrm2ms6CT0vyNDOD91MTJcPEHlORdduDfc0SuguYMVftn6m8hJVhd/H8OIOmuioapxafEEy1GbVAT8lozkditTf9QoHC8d6o7DMCHWrp62H1T8GMRjS8+a+PN8bajrpjWkawjd59tbQ04I0gOGDI7qHalwQTILgCbmOitqMYATn3I1t3Id9Prfwrssxve7vpfxnmDIfJB8S6sP8nweaf0CwvEAC+kbGx2VIeGGZxXKxaJMws9WkoVbwrM7kR4LQAtPrKTRaHJz2f1ZOGxRiIeNOm2tk5ezviA1PHe3g5VoFD/bsd6csezZmS+pCMhR1ip7tu6oEAW5O0zBd9zG8tZ5eI0IUUeYF6v2hlqBykuXjiVzCGP3eLLwS+SYYagN+H2kXeNafwS29iLKpAoX8DnYb6InGPcZalN1wyYgpbWrmbu47O36Lf4jrkKwK4N4DT54VWWcSO2bsr4G7GvXls3B+pD2jLlY7TvS53icm7zBb4uSl5rj54nuVQ/eLiY2QFIfRwQbGHBSgCyAfuEm2rntkLgco2FtrgrXNCAstEDkpjZApaNi/gwwEKFKolNoi8AERahSXpvWs3Bt1mjs/6wQgA+3f0UTmhQvoMckvhBG0bdUQJxDlWraghiE8Mm7SO8mzl97+4="
 
 before_install:
-  - sudo apt-get update
-  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-  - sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/"
-  - sudo apt-get -y install libopenblas-base
-  - sudo apt-get -y install r-base r-base-dev r-cran-mgcv
   - "export R_VERSION=`R --version | head -n 1 | cut -d' ' -f3-4`"
   - echo "Running R $R_VERSION"
   - pip install -r requirements.txt
   - python -m ipykernel install --name cellrank --user
+addons:
+  apt:
+    update: true
+  sources:
+    - sourceline: "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/"
+      key_url: "http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0xE298A3A825C0D65DFD57CBB651716619E084DAB9"
+  packages:
+    - libopenblas-base
+    - r-base
+    - r-base-dev
+    - r-cran-mgcv
 
 install:
   - git clone https://github.com/theislab/cellrank
