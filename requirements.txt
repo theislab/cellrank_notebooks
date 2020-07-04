@@ -1,6 +1,7 @@
-future-fstrings
-notebook
+future-fstrings  # msmtools installation
+ipywidgets  # notebook execution
+notebook  # notebook execution
 pytest-notebook>=0.6.0
 pytest-parallel>=0.1.0
 pytest>=4.4
-vendorize
+vendorize  # msmtools bundling
