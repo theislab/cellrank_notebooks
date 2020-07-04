@@ -23,7 +23,7 @@ install:
   - cd ..
 
 script:
-  - pytest
+  - travis_wait 30 pytest
 
 after_success:
   - curl -X POST -d "branches=master" -d "token=$RTD_TOKEN" https://readthedocs.org/api/v2/webhook/cellrank/125510/
