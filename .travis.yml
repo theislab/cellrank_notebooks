@@ -18,7 +18,7 @@ before_install:
 install:
   - git clone https://github.com/theislab/cellrank
   - cd cellrank
-  - pip install -e .
+  - pip install -e .[test]
   - python-vendorize
   - cd ..
 
