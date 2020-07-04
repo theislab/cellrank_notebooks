@@ -1,4 +1,5 @@
 future-fstrings
+notebook
 pytest-notebook>=0.6.0
 pytest-parallel>=0.1.0
 pytest>=4.4
