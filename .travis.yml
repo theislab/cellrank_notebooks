@@ -13,7 +13,7 @@ before_install:
   - sudo apt-get -y install libopenblas-base
   - sudo apt-get -y install r-base r-base-dev r-cran-mgcv
   - pip install -r requirements.txt
-  - python -m ipykernel install --name cellrank
+  - python -m ipykernel install --name cellrank --user
 
 install:
   - git clone https://github.com/theislab/cellrank
