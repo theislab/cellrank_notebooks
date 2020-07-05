@@ -1,6 +1,9 @@
 language: python
 
-python: "3.6"
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
 
 os: linux
 
@@ -18,14 +21,14 @@ before_install:
 addons:
   apt:
     update: true
-  sources:
-    - sourceline: "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/"
-      key_url: "http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0xE298A3A825C0D65DFD57CBB651716619E084DAB9"
-  packages:
-    - libopenblas-base
-    - r-base
-    - r-base-dev
-    - r-cran-mgcv
+    sources:
+      - sourceline: "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/"
+        key_url: "http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0xE298A3A825C0D65DFD57CBB651716619E084DAB9"
+    packages:
+      - libopenblas-base
+      - r-base
+      - r-base-dev
+      - r-cran-mgcv
 
 install:
   - git clone https://github.com/theislab/cellrank
@@ -38,4 +41,4 @@ script:
   - travis_wait 30 pytest
 
 after_success:
-  - curl -X POST -d "branches=master" -d "token=$RTD_TOKEN" https://readthedocs.org/api/v2/webhook/cellrank/125510/
+  - if [ "$TRAVIS_PYTHON_VERSION" == "3.8" ]; then curl -X POST -d "branches=master" -d "token=$RTD_TOKEN" https://readthedocs.org/api/v2/webhook/cellrank/125510/; fi
