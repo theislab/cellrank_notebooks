@@ -7,16 +7,18 @@ if [[ "$TRAVIS_OS_NAME" == "linux" && "$USE_SLEPC" == "true" ]]; then
     sudo apt-get update -y
     sudo apt-get install gcc gfortran libopenmpi-dev libblas-dev liblapack-dev -y
 
-    echo "Installing SLEPc and PETSc"
+    echo "Installing SLEPc and PETSc Python libraries"
 
-    sudo pip install mpi4py
+    pip_cmd=$(which pip)  # because sudo pip is Python2.7
 
-    sudo pip install petsc
-    sudo pip install petsc4py
+    sudo $pip_cmd install mpi4py
 
-    sudo pip install slepc
-    sudo pip install slepc4py
+    sudo $pip_cmd install petsc
+    sudo $pip_cmd install petsc4py
+
+    sudo $pip_cmd install slepc
+    sudo $pip_cmd install slepc4py
 
     python -c "import slepc; import petsc;"
-    echo "Succesfully installed SLEPc and PETSc"
+    echo "Successfully installed SLEPc and PETSc"
 fi
