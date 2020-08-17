@@ -3,6 +3,7 @@
 set -e
 
 pip install -r requirements.txt  # test requirements for notebooks
+python -m ipykernel install --name cellrank --user
 
 git clone https://github.com/theislab/cellrank
 cd cellrank
