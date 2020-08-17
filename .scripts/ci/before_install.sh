@@ -2,7 +2,7 @@
 
 set -e
 
-if [[ "$TRAVIS_OS_NAME" == "linux" && "$USE_SLEPC" == "true"]]; then
+if [[ "$TRAVIS_OS_NAME" == "linux" && "$USE_SLEPC" == "true" ]]; then
     echo "Installing SLEPc and PETSc dependencies"
     sudo apt-get update -y
     sudo apt-get install gcc gfortran libopenmpi-dev libblas-dev liblapack-dev -y
