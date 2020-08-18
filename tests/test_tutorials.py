@@ -13,7 +13,7 @@ SENTINEL = "SENTINEL REACHED"
 
 
 def _inject_sentinel(nb) -> None:
-    sentinel = sentinel = nbformat.v4.new_code_cell(source=f"print('{SENTINEL}')")
+    sentinel = nbformat.v4.new_code_cell(source=f"print({SENTINEL!r})")
     nb["cells"].append(sentinel)
 
 
