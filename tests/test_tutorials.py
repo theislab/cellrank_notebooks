@@ -52,6 +52,6 @@ def test_pancreas_basic():
     pass
 
 
-# @test()
-# def test_pancreas_advanced():
-#    pass
+@test()
+def test_pancreas_advanced():
+    pass
