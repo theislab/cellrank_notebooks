@@ -37,6 +37,7 @@ def test():
 
             with tempfile.NamedTemporaryFile("w", suffix=".ipynb") as tmpf:
                 nbformat.write(nb, tmpf)
+                tmpf.flush()
                 result = nb_regression.check(tmpf.name, raise_errors=False)
 
             _assert_execute_sentinel(result)
@@ -51,6 +52,6 @@ def test_pancreas_basic():
     pass
 
 
-@test()
-def test_pancreas_advanced():
-    pass
+# @test()
+# def test_pancreas_advanced():
+#    pass
