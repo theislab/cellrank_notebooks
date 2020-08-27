@@ -36,9 +36,10 @@ script:
 deploy:
   - provider: script
     script:  ./.scripts/ci/deploy.sh
+    skip_cleanup: true
     on:
       branch: master
-      condition: $TRAVIS_EVENT_TYPE == "push"
+      condition: $TRAVIS_EVENT_TYPE == "push" && -n "${DEPLOY_TOKEN+x}" && -n "${RTD_TOKEN+x}"
 
 notifications:
   email:
