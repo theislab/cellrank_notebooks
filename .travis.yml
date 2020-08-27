@@ -37,7 +37,6 @@ deploy:
   - provider: script
     script: curl -X POST -d "branches=master" -d "token=$RTD_TOKEN" https://readthedocs.org/api/v2/webhook/cellrank/125510/
     on:
-      branch: master
       condition: -n ${RTD_TOKEN+x}
 
 notifications:
