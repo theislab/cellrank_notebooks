@@ -6,9 +6,8 @@ dependencies:
   - pip
   - notebook
   - python-igraph
-  - matplotlib>=3.2.1
   - pip:
-    - cellrank>=1.0.0
+    - cellrank>=1.0.0rc6
     - scvelo>=0.2.0
     - anndata>=0.7.1
     - louvain>=0.6,!=0.6.2
