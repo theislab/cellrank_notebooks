@@ -39,7 +39,7 @@ deploy:
     skip_cleanup: true
     on:
       branch: master
-      condition: $TRAVIS_EVENT_TYPE == "push" && -n "${DEPLOY_TOKEN+x}" && -n "${RTD_TOKEN+x}"
+      condition: $TRAVIS_EVENT_TYPE == "push" && -n ${DEPLOY_TOKEN+x} && -n ${RTD_TOKEN+x}
 
 notifications:
   email:
