@@ -10,11 +10,19 @@ os: linux
 cache: pip
 
 env:
-  global:
-    secure: "nsXrAR+koQ5SQyJk+GCsLM4t7tGpaMU/fMXkrm2ms6CT0vyNDOD91MTJcPEHlORdduDfc0SuguYMVftn6m8hJVhd/H8OIOmuioapxafEEy1GbVAT8lozkditTf9QoHC8d6o7DMCHWrp62H1T8GMRjS8+a+PN8bajrpjWkawjd59tbQ04I0gOGDI7qHalwQTILgCbmOitqMYATn3I1t3Id9Prfwrssxve7vpfxnmDIfJB8S6sP8nweaf0CwvEAC+kbGx2VIeGGZxXKxaJMws9WkoVbwrM7kR4LQAtPrKTRaHJz2f1ZOGxRiIeNOm2tk5ezviA1PHe3g5VoFD/bsd6csezZmS+pCMhR1ip7tu6oEAW5O0zBd9zG8tZ5eI0IUUeYF6v2hlqBykuXjiVzCGP3eLLwS+SYYagN+H2kXeNafwS29iLKpAoX8DnYb6InGPcZalN1wyYgpbWrmbu47O36Lf4jrkKwK4N4DT54VWWcSO2bsr4G7GvXls3B+pD2jLlY7TvS53icm7zBb4uSl5rj54nuVQ/eLiY2QFIfRwQbGHBSgCyAfuEm2rntkLgco2FtrgrXNCAstEDkpjZApaNi/gwwEKFKolNoi8AERahSXpvWs3Bt1mjs/6wQgA+3f0UTmhQvoMckvhBG0bdUQJxDlWraghiE8Mm7SO8mzl97+4="
-  jobs:
-    - USE_SLEPC=true
-    - USE_SLEPC=false
+  - USE_SLEPC=true
+  - USE_SLEPC=false
+
+jobs:
+  include:
+    - name: "Notebooks and documentation regen and deployment"
+      os: linux
+      python: "3.8"
+      env:
+        - USE_SLEPC=true
+        # RTD and DEPLOY tokens, respectively
+        - secure: "nsXrAR+koQ5SQyJk+GCsLM4t7tGpaMU/fMXkrm2ms6CT0vyNDOD91MTJcPEHlORdduDfc0SuguYMVftn6m8hJVhd/H8OIOmuioapxafEEy1GbVAT8lozkditTf9QoHC8d6o7DMCHWrp62H1T8GMRjS8+a+PN8bajrpjWkawjd59tbQ04I0gOGDI7qHalwQTILgCbmOitqMYATn3I1t3Id9Prfwrssxve7vpfxnmDIfJB8S6sP8nweaf0CwvEAC+kbGx2VIeGGZxXKxaJMws9WkoVbwrM7kR4LQAtPrKTRaHJz2f1ZOGxRiIeNOm2tk5ezviA1PHe3g5VoFD/bsd6csezZmS+pCMhR1ip7tu6oEAW5O0zBd9zG8tZ5eI0IUUeYF6v2hlqBykuXjiVzCGP3eLLwS+SYYagN+H2kXeNafwS29iLKpAoX8DnYb6InGPcZalN1wyYgpbWrmbu47O36Lf4jrkKwK4N4DT54VWWcSO2bsr4G7GvXls3B+pD2jLlY7TvS53icm7zBb4uSl5rj54nuVQ/eLiY2QFIfRwQbGHBSgCyAfuEm2rntkLgco2FtrgrXNCAstEDkpjZApaNi/gwwEKFKolNoi8AERahSXpvWs3Bt1mjs/6wQgA+3f0UTmhQvoMckvhBG0bdUQJxDlWraghiE8Mm7SO8mzl97+4="
+        - secure: "lTOgoZugqLoYUjtMj7qUro200HfhJBycJ3RVEkyLH/5OrKhf5nTx66AocXfaGsQoXgsghS71s6r6wixd8f6tMBhbq78KksWVkXWWJr8QJ70dU68hx+6T0+rHFtuFNEpiB+BEjAqhBHfwY3p6LHc+hMiw7ej1lfiMQtt/KnSsf7BbJN+4Xre0Q9q1yHojz/Rdp1cvcR6PXJH9o4spL2+kyzQBAtPe22NZICOnfUjquQB5BHfGcipkhxld1sM9iHEljK2OHwJL7GCo8hwyE3c1UtEOIoAz9+pubrrnCSqaeOoLSBTFqh6yUjwfNyYuBJhrQFgwEloa4g4iI4BWwZcKk8ALbRldRdz2Fg1l838f+mVqErrdU04jblhQKlSM50ZDcTv/D+kx7BjHHDVmLUQQGO+Qo87PYMxsFgan0LKkyeyjfSJQjmNHgRZjhXTeoGP9ZxzQzfKuKvgNHmJc51ssGeSb09DJUzeZECNZRlOjeMkhnxHa8XL3GeY+aEZiuIqyGHyVaOlZUFD3Ov5rK0gcmSCFDuQgpcNFGRxeJeYLw0J4BobWHAAVJ2RnCvTjlYIU5hNicVxwfE+xObkGJ0VfAkSQdz3uhjrOZuXHGrKyxInaNc/4OcCQBM9okWIhSail2pdXUvUtu2qbPE9VZExlXwQc75HhmLuppHycU42WxKg="
 
 before_install:
   - ./.scripts/ci/before_install.sh || travis_terminate 1
@@ -23,7 +31,18 @@ install:
   - ./.scripts/ci/install.sh || travis_terminate 1
 
 script:
-  - travis_wait 30 pytest
+  - travis_wait 30 ./.scripts/ci/test.sh || travis_terminate 1
 
-after_success:
-  - if [[ "$TRAVIS_PYTHON_VERSION" == "3.8" && "$USE_SLEPC" == "true" ]]; then curl -X POST -d "branches=master" -d "token=$RTD_TOKEN" https://readthedocs.org/api/v2/webhook/cellrank/125510/; fi
+deploy:
+  - provider: script
+    script: curl -X POST -d "branches=master" -d "token=$RTD_TOKEN" https://readthedocs.org/api/v2/webhook/cellrank/125510/
+    on:
+      branch: master
+      condition: -n ${RTD_TOKEN+x}
+
+notifications:
+  email:
+    recipients:
+      - info@cellrank.org
+    on_success: never
+    on_failure: always
