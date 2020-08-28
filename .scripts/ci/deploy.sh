@@ -1,13 +1,25 @@
 #!/usr/bin/env bash
 
-echo "Pushing regenerated notebooks"
+if [[ $TRAVIS_EVENT_TYPE == "push" && $TRAVIS_BRANCH == "master" && ! -z "${CR_NOTEBOOKS+x}" ]]; then
+    git config --global user.name "TravisCI"
+    git config --global user.email "travis@travis-ci.com"
 
-git config --global user.name "TravisCI"
-git config --global user.name "travis@travis-ci.com"
+    git checkout master
+    git add -f tutorials/*
+    git commit -m "[ci skip] Regenerate notebooks: $TRAVIS_BUILD_NUMBER"
 
-git add tutorials/*
-git commit --allow-empty -m "[ci skip] Regenerate notebooks"
-git push "https://$CR_NOTEBOOKS@github.com/$TRAVIS_REPO_SLUG" origin master
+    if [[ $? -eq 0 ]]; then
+        echo "Pushing regenerated notebooks"
 
-echo "Requesting documentation rebuild for master"
-curl -X POST -d "branches=master" -d "token=$RTD_TOKEN" https://readthedocs.org/api/v2/webhook/cellrank/125510/
+        git remote rm origin
+        git remote add origin "https://$CR_NOTEBOOKS@github.com/$TRAVIS_REPO_SLUG"  >/dev/null 2>&1
+        git push origin master --quiet
+
+        if [[ $? -eq 0 && ! -z "${RTD_TOKEN+x}" ]]; then
+            echo "Requesting documentation rebuild for master"
+            curl -X POST -d "branches=master" -d "token=$RTD_TOKEN" https://readthedocs.org/api/v2/webhook/cellrank/125510/
+        fi
+    else
+        echo "Nothing to commit"
+    fi
+fi
