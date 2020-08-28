@@ -3,6 +3,7 @@
 echo "Pushing regenerated notebooks"
 
 git config --global user.name "TravisCI"
+git config --global user.name "travis@travis-ci.com"
 
 git add tutorials/*
 git commit --allow-empty -m "[ci skip] Regenerate notebooks"
