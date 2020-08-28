@@ -11,13 +11,13 @@ if [[ "$TRAVIS_OS_NAME" == "linux" && "$USE_SLEPC" == "true" ]]; then
 
     pip_cmd=$(which pip)  # because sudo pip is Python2.7
 
-    sudo $pip_cmd install mpi4py
+    sudo -H $pip_cmd install mpi4py
 
-    sudo $pip_cmd install petsc
-    sudo $pip_cmd install petsc4py
+    sudo -H $pip_cmd install petsc
+    sudo -H $pip_cmd install petsc4py
 
-    sudo $pip_cmd install slepc
-    sudo $pip_cmd install slepc4py
+    sudo -H $pip_cmd install slepc
+    sudo -H $pip_cmd install slepc4py
 
     python -c "import slepc; import petsc;"
     echo "Successfully installed SLEPc and PETSc"
