@@ -7,7 +7,5 @@ dependencies:
   - notebook
   - python-igraph
   - pip:
-    - cellrank>=1.0.0rc6
-    - scvelo>=0.2.0
-    - anndata>=0.7.1
+    - cellrank>=1.0.0rc11
     - louvain>=0.6,!=0.6.2
