@@ -4,7 +4,7 @@ if [[ $TRAVIS_EVENT_TYPE == "push" && $TRAVIS_BRANCH == "master" && ! -z "${CR_N
     git config --global user.name "TravisCI"
     git config --global user.email "travis@travis-ci.com"
 
-    git checkout master
+    git checkout -f master
     git add -f tutorials/*
     git commit -m "[ci skip] Regenerate notebooks: $TRAVIS_BUILD_NUMBER"
 
