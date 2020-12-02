@@ -70,8 +70,8 @@ CellRank was developed in collaboration between the `Theislab`_ and the `Peerlab
     :target: https://travis-ci.com/github/theislab/cellrank
     :alt: CI
 
-.. |Notebooks| image:: https://img.shields.io/github/workflow/status/theislab/cellrank_notebooks/ci/master?label=notebooks
-    :target: https://github.com/theislab/cellrank_notebooks/actions/
+.. |Notebooks| image:: https://img.shields.io/github/workflow/status/theislab/cellrank_notebooks/CI?label=notebooks
+    :target: https://travis-ci.com/github/theislab/cellrank_notebooks
     :alt: CI-Notebooks
 
 .. |Docs|  image:: https://img.shields.io/readthedocs/cellrank
