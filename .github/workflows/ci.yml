@@ -1,0 +1,96 @@
+name: CI
+
+on:
+  repository_dispatch:
+    types: [rebuild]
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.ci-skip-step.outputs.ci-skip }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - id: ci-skip-step
+        uses: mstachniuk/ci-skip@master
+        with:
+          commit-filter: '[ci skip];[ci-skip];[skip ci];[skip-ci]'
+          commit-filter-separator: ';'
+
+  test:
+    needs: init
+    if: ${{ needs.init.outputs.skip == 'false' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+          path: cellrank_notebooks
+      - name: Checkout CellRank (master)
+        uses: actions/checkout@v2
+        with:
+          repository: theislab/cellrank
+          path: cellrank
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Get pip cache dir
+        id: pip-cache
+        run: |
+          echo "::set-output name=dir::$(pip cache dir)"
+
+      - name: Cache pip
+        uses: actions/cache@v2
+        with:
+          path: |
+            ${{ steps.pip-cache.outputs.dir }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python -m ipykernel install --name cellrank --user  # to run the notebook engine
+        working-directory: ./cellrank_notebooks
+
+      - name: Install CellRank devel
+        run: |
+          pip install -e".[test]"
+          python-vendorize
+        working-directory: ./cellrank
+
+      - name: Testing
+        run: |
+          python -m pytest --regenerate
+          git status
+        working-directory: ./cellrank_notebooks
+
+      - name: Commit changes
+        if: ((github.event_name == 'repository_dispatch' && github.event.action == 'rebuild') || github.event_name == 'push') && github.ref == 'refs/heads/master'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          # changes from auto-commit will not trigger another workflow, [ci skip] is for safety reasons
+          repository: cellrank_notebooks
+          commit_message: '[ci skip] Regenerate tutorials'
+          file_pattern: tutorials/*.ipynb
+          commit_user_name: 'CI'
+          skip_dirty_check: true
+
+      - name: Request documentation rebuild
+        if: success() && steps.auto-commit-action.outputs.changes_detected == 'true'
+        run: |
+          curl -X POST -d "branches=master" -d "token=${{ secrets.RTD_TOKEN }}" "${{ secrets.RTD_WEBHOOK }}"
