@@ -80,6 +80,7 @@ jobs:
         working-directory: ./cellrank_notebooks
 
       - name: Commit changes
+        id: auto-commit-action
         if: ((github.event_name == 'repository_dispatch' && github.event.action == 'rebuild') || github.event_name == 'push') && github.ref == 'refs/heads/master'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
