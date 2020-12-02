@@ -59,7 +59,6 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-        working-directory: ./cellrank_notebooks
 
       - name: Install dependencies
         run: |
@@ -77,6 +76,7 @@ jobs:
       - name: Testing
         run: |
           python -m pytest --regenerate
+          git status
         working-directory: ./cellrank_notebooks
 
       - name: Commit changes
@@ -84,11 +84,11 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           # changes from auto-commit will not trigger another workflow, [ci skip] is for safety reasons
+          repository: cellrank_notebooks
           commit_message: '[ci skip] Regenerate tutorials'
           file_pattern: tutorials/*.ipynb
           commit_user_name: 'CI'
           skip_dirty_check: true
-        working-directory: ./cellrank_notebooks
 
       - name: Request documentation rebuild
         if: success() && steps.auto-commit-action.outputs.changes_detected == 'true'
