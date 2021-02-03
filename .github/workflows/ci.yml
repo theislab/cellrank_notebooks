@@ -70,7 +70,6 @@ jobs:
       - name: Install CellRank devel
         run: |
           pip install -e".[test]"
-          python-vendorize
         working-directory: ./cellrank
 
       - name: Testing
