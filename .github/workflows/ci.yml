@@ -35,10 +35,11 @@ jobs:
         with:
           fetch-depth: '0'
           path: cellrank_notebooks
-      - name: Checkout CellRank (master)
+      - name: Checkout CellRank (dev)
         uses: actions/checkout@v2
         with:
           repository: theislab/cellrank
+          ref: dev
           path: cellrank
 
       - name: Set up Python 3.8

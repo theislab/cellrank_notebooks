@@ -68,3 +68,8 @@ def test_pancreas_basic():
 @test()
 def test_pancreas_advanced():
     pass
+
+
+@test()
+def test_creating_new_kernel():
+    pass
