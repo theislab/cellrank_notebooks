@@ -61,12 +61,17 @@ def test():
 
 
 @test()
-def test_pancreas_basic():
+def test_cellrank_basics():
     pass
 
 
 @test()
-def test_pancreas_advanced():
+def test_kernels_and_estimators():
+    pass
+
+
+@test()
+def test_beyond_rna_velocity():
     pass
 
 
