@@ -2,35 +2,40 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
+    rev: v4.0.1
     hooks:
-    - id: check-docstring-first
-    - id: end-of-file-fixer
-    - id: check-added-large-files
-    - id: mixed-line-ending
-    - id: trailing-whitespace
-    - id: check-merge-conflict
-    - id: check-case-conflict
-    - id: check-symlinks
-    - id: check-yaml
-    - id: check-ast
-    - id: fix-encoding-pragma
-    - id: requirements-txt-fixer
+    -   id: check-docstring-first
+    -   id: end-of-file-fixer
+    -   id: check-added-large-files
+    -   id: mixed-line-ending
+    -   id: trailing-whitespace
+    -   id: check-merge-conflict
+    -   id: check-case-conflict
+    -   id: check-symlinks
+    -   id: check-yaml
+    -   id: check-ast
+    -   id: fix-encoding-pragma
+    -   id: requirements-txt-fixer
 -   repo: https://github.com/psf/black
-    rev: 20.8b1
+    rev: 21.6b0
     hooks:
-    - id: black
+    -   id: black
 -   repo: https://github.com/timothycrosley/isort
-    rev: 5.7.0
+    rev: 5.9.1
     hooks:
-    - id: isort
-      additional_dependencies: ["toml"]
+    -   id: isort
+        additional_dependencies: [toml]
 -   repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.4
+    rev: 3.9.2
     hooks:
-    - id: flake8
-      additional_dependencies: ["flake8-docstrings", "flake8-comprehensions", "flake8-bugbear"]
+    -   id: flake8
+        additional_dependencies: [flake8-docstrings, flake8-comprehensions, flake8-bugbear]
 -   repo: https://github.com/asottile/pyupgrade
-    rev: v2.7.4
+    rev: v2.19.4
     hooks:
     -   id: pyupgrade
+-   repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v2.1.0
+    hooks:
+    -   id: pretty-format-yaml
+        args: [--autofix, --indent, '4']
