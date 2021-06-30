@@ -76,5 +76,10 @@ def test_beyond_rna_velocity():
 
 
 @test()
+def test_real_time():
+    pass
+
+
+@test()
 def test_creating_new_kernel():
     pass
