@@ -9,3 +9,4 @@ dependencies:
   - pip:
     - cellrank>=1.3.0
     - louvain>=0.6,!=0.6.2
+    - git+https://github.com/broadinstitute/wot@master
