@@ -7,5 +7,4 @@ dependencies:
 -   notebook
 -   python-igraph
 -   pip:
-    -   cellrank>=1.4.0
-    -   git+https://github.com/broadinstitute/wot@master
+    -   cellrank[external]>=1.4.0
