@@ -50,8 +50,9 @@ jobs:
             working-directory: ./cellrank_notebooks
 
         -   name: Install CellRank devel
+            # test also installs python-igraph and leidenalg
             run: |
-                pip install -e'.'
+                pip install -e'.[test]'
             working-directory: ./cellrank
 
         -   name: Test
