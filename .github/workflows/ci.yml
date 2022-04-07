@@ -18,11 +18,11 @@ jobs:
         -   uses: actions/checkout@v2
             with:
                 path: cellrank_notebooks
-        -   name: Checkout CellRank devel
+        -   name: Checkout CellRank
             uses: actions/checkout@v2
             with:
                 repository: theislab/cellrank
-                ref: dev
+                ref: master
                 path: cellrank
 
         -   name: Set up Python 3.8
@@ -49,7 +49,7 @@ jobs:
                 python -m ipykernel install --name cellrank --user  # to run the notebook engine
             working-directory: ./cellrank_notebooks
 
-        -   name: Install CellRank devel
+        -   name: Install CellRank
             # test also installs python-igraph and leidenalg
             run: |
                 pip install -e'.[test]'
@@ -66,7 +66,7 @@ jobs:
             uses: stefanzweifel/git-auto-commit-action@v4
             with:
                 repository: cellrank_notebooks
-                commit_message: '[auto][ci skip] Regenerate devel tutorials'
+                commit_message: '[auto][ci skip] Regenerate tutorials'
                 file_pattern: tutorials/*.ipynb
                 commit_user_name: CI
                 skip_dirty_check: false
@@ -74,4 +74,4 @@ jobs:
         -   name: Request documentation rebuild
             if: steps.auto-commit-action.outputs.changes_detected == 'true'
             run: |
-                curl -X POST -d "branches=dev" -d "token=${{ secrets.RTD_TOKEN }}" "${{ secrets.RTD_WEBHOOK }}"
+                curl -X POST -d "branches=master" -d "token=${{ secrets.RTD_TOKEN }}" "${{ secrets.RTD_WEBHOOK }}"
