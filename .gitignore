@@ -107,6 +107,9 @@ venv.bak/
 # pycharm stuff
 **.idea/
 
+# biomart 
+*.pybiomart.sqlite
+
 # repo-specific folders and files
 **/cache
 **/write
