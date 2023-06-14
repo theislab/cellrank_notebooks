@@ -1,11 +1,21 @@
-|PyPI| |Bioconda| |Downloads| |CI| |Notebooks| |Docs| |Codecov|
+|PyPI| |Bioconda| |Downloads| |Discourse| |CI| |Notebooks| |Docs| |Codecov|
 
 CellRank for directed single-cell fate mapping
 ==============================================
 
-.. image:: https://raw.githubusercontent.com/theislab/cellrank/main/resources/images/cellrank_fate_map.png
-   :width: 600px
-   :align: center
+.. image:: https://raw.githubusercontent.com/theislab/cellrank/main/docs/_static/img/cellrank_overview.png
+    :width: 600px
+    :align: center
+
+.. sidebar:: Key Contributors
+
+    * `Marius Lange`_: lead developer, initial CellRank conception, maintainer
+    * `Michal Klein`_: senior developer, design & architecture, maintainer
+    * `Philipp Weiler`_: developer
+
+.. _Marius Lange: https://twitter.com/MariusLange8
+.. _Michal Klein: https://github.com/michalk8
+.. _Philipp Weiler: https://twitter.com/PhilippWeiler7
 
 **CellRank** is a toolkit to uncover cellular dynamics based on Markov state modeling of single-cell data. It contains
 two main modules: `kernels`_ compute cell-cell transition probabilities and `estimators`_ generate hypothesis based on
@@ -13,7 +23,7 @@ these. Our kernels work with a variety of input data including `RNA velocity`_ (
 `Bergen et al. (2020)`_), `cellular similarity`_ (both transcriptomic and spatial) and `pseudotime`_, among others.
 Our `VelocityKernel`_ takes into account **uncertainty in the velocities** and allows you to aggregate the short-range
 fate relations given by RNA velocity into longer trends along the phenotypic manifold. Our main estimator is
-*Generalized Perron Cluster Cluster Analysis* (G-PCCA) GPCCA18_ which coarse-grains the Markov chain
+*Generalized Perron Cluster Cluster Analysis* (`Reuter et al. (2018)`_) which coarse-grains the Markov chain
 into a set of macrostates which represent initial, terminal and intermediate states. For each transient cell,
 we compute its fate probability towards any terminal state. We show an example of such a fate map in the figure above,
 which has been computed using the data of `pancreatic endocrinogenesis`_. CellRank combines `kernels`_ and `estimators`_
@@ -53,10 +63,6 @@ Install CellRank by running::
 or via PyPI::
 
     pip install cellrank
-    # or with extra libraries, useful for large datasets
-    pip install 'cellrank[krylov]'
-    # or with external modules, see External API
-    pip install 'cellrank[external]'
 
 Why is it called "CellRank"?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -86,8 +92,16 @@ CellRank was developed in collaboration between the `Theislab`_ and the `Peerlab
     :alt: PyPI
 
 .. |Bioconda| image:: https://img.shields.io/conda/vn/bioconda/cellrank
-    :target: https://bioconda.github.io/recipes/cellrank/README.html
+    :target: https://anaconda.org/bioconda/cellrank
     :alt: Bioconda
+
+.. |Downloads| image:: https://pepy.tech/badge/cellrank
+    :target: https://pepy.tech/project/cellrank
+    :alt: Downloads
+
+.. |Discourse| image:: https://img.shields.io/discourse/posts?color=yellow&logo=discourse&server=https%3A%2F%2Fdiscourse.scverse.org
+    :target: https://discourse.scverse.org/
+    :alt: Discourse
 
 .. |CI| image:: https://img.shields.io/github/actions/workflow/status/theislab/cellrank/test.yml?branch=main
     :target: https://github.com/theislab/cellrank/actions
@@ -101,10 +115,6 @@ CellRank was developed in collaboration between the `Theislab`_ and the `Peerlab
     :target: https://cellrank.readthedocs.io/en/stable
     :alt: Documentation
 
-.. |Downloads| image:: https://pepy.tech/badge/cellrank
-    :target: https://pepy.tech/project/cellrank
-    :alt: Downloads
-
 .. |Codecov| image:: https://codecov.io/gh/theislab/cellrank/branch/main/graph/badge.svg
     :target: https://codecov.io/gh/theislab/cellrank
     :alt: Coverage
@@ -112,7 +122,7 @@ CellRank was developed in collaboration between the `Theislab`_ and the `Peerlab
 
 .. _La Manno et al. (2018): https://doi.org/10.1038/s41586-018-0414-6
 .. _Bergen et al. (2020): https://doi.org/10.1038/s41587-020-0591-3
-.. _GPCCA18: https://doi.org/10.1021/acs.jctc.8b00079
+.. _Reuter et al. (2018): https://doi.org/10.1021/acs.jctc.8b00079
 .. _pancreatic endocrinogenesis: https://doi.org/10.1242/dev.173849
 .. _cellrank.org: https://cellrank.org
 
