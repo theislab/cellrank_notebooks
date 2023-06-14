@@ -1,7 +1,0 @@
-jsonpath_ng>=1.5.1
-jupyter_client<7.0  # https://github.com/jupyter/jupyter_client/issues/637
-nbconvert==6.5.1
-nbformat>=5.0.4
-notebook  # notebook execution
-pytest>=4.4
-pytest-notebook>=0.6.0
