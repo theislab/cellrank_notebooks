@@ -120,3 +120,4 @@ venv.bak/
 cached_files/
 tutorials/datasets/
 **/datasets/
+*.h5ad
