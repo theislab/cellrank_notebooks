@@ -3,7 +3,7 @@ Tutorials
 This section contains various tutorials showcasing use cases for data analysis with CellRank.
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :glob:
 
     *
