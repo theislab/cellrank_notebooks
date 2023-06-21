@@ -1,9 +1,26 @@
 Tutorials
 =========
-This section contains various tutorials showcasing use cases for data analysis with CellRank.
 
+General
+-------
 .. toctree::
     :maxdepth: 1
     :glob:
 
-    *
+    general/*
+
+Kernels
+-------
+.. toctree::
+    :maxdepth: 1
+    :glob:
+
+    kernels/*
+
+Estimators
+----------
+.. toctree::
+    :maxdepth: 1
+    :glob:
+
+    estimators/*
