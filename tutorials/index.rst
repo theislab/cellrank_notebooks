@@ -1,26 +1,10 @@
 Tutorials
 =========
 
-General
--------
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
     :glob:
 
-    general/*
-
-Kernels
--------
-.. toctree::
-    :maxdepth: 1
-    :glob:
-
-    kernels/*
-
-Estimators
-----------
-.. toctree::
-    :maxdepth: 1
-    :glob:
-
-    estimators/*
+    general/index
+    kernels/index
+    estimators/index
