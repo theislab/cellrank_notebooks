@@ -44,8 +44,8 @@ scikit-learn = "<1.8"
 scanpy = ">=1.10"
 scvelo = ">=0.3"
 moscot = ">=0.3"
-cellrank = { path = "../../cellrank", editable = true }
-pygpcca = { path = "../../pyGPCCA", editable = true }
+cellrank = { path = "../..", editable = true }
+pygpcca = { path = "../../../pyGPCCA", editable = true }
 torch = "*"
 
 # Notebook workflow
