@@ -121,3 +121,10 @@ cached_files/
 tutorials/datasets/
 **/datasets/
 *.h5ad
+
+# Pixi
+.pixi/
+pixi.lock
+
+# GitHub Copilot prompts
+.github/prompts/
