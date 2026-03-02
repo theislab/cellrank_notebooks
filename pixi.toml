@@ -1,0 +1,63 @@
+[workspace]
+name = "cellrank-notebooks"
+version = "0.1.0"
+description = "CellRank tutorial notebooks"
+authors = ["Marius Lange <marius.lange@bsse.ethz.ch>"]
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64"]
+
+[pypi-options]
+extra-index-urls = ["https://pypi.nvidia.com"]
+
+[tasks]
+lab = "jupyter lab"
+install-kernel = "python -m ipykernel install --user --name=cellrank-notebooks --display-name='CellRank Notebooks (Pixi)'"
+
+[dependencies]
+python = "3.12.*"
+# Pin numpy to avoid conda/pypi conflicts with numba
+numpy = ">=2.0,<2.2"
+
+# CellRank accelerated linear algebra (PETSc/SLEPc)
+# Pre-built from conda-forge; PyPI wheels require building from source
+petsc4py = "*"
+slepc4py = "*"
+
+# Shapely from conda to avoid pygeos build issues
+shapely = "*"
+
+[target.osx-arm64.pypi-dependencies]
+# CPU-only JAX on macOS (MPS handled automatically by torch)
+jax = "<0.9.0"
+
+[target.linux-64.pypi-dependencies]
+# GPU stack for Linux (CUDA 12)
+rapids-singlecell = { version = ">=0.13", extras = ["rapids12"] }
+jax = { version = "<0.9.0", extras = ["cuda12"] }
+
+[pypi-dependencies]
+# Compatibility fix: cuML (rapids dependency) incompatible with sklearn 1.8
+# https://github.com/rapidsai/cuml/issues/6426
+scikit-learn = "<1.8"
+
+# Core single-cell stack
+scanpy = ">=1.10"
+scvelo = ">=0.3"
+moscot = ">=0.3"
+cellrank = { path = "../..", editable = true }
+pygpcca = { path = "../../../pyGPCCA", editable = true }
+torch = "*"
+
+# Notebook workflow
+jupyterlab = "*"
+ipykernel = "*"
+ipywidgets = "*"
+# Pin pandas < 3.0 until anndata supports Arrow-backed strings
+# https://github.com/scverse/anndata/issues/1434
+pandas = ">=2.0, <3"
+matplotlib = "*"
+seaborn = "*"
+
+# Utilities
+pre-commit = "*"
+session-info2 = "*"

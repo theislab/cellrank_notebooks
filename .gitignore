@@ -107,7 +107,7 @@ venv.bak/
 # pycharm stuff
 **.idea/
 
-# biomart 
+# biomart
 *.pybiomart.sqlite
 
 # repo-specific folders and files
@@ -121,3 +121,10 @@ cached_files/
 tutorials/datasets/
 **/datasets/
 *.h5ad
+
+# Pixi
+.pixi/
+pixi.lock
+
+# GitHub Copilot prompts
+.github/prompts/
