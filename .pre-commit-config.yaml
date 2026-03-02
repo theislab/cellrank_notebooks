@@ -13,7 +13,7 @@ repos:
   rev: 1.9.1
   hooks:
   - id: nbqa-ruff
-    args: [--fix, --exit-non-zero-on-fix]
+    args: [--fix, --exit-non-zero-on-fix, --extend-ignore=E402]
   - id: nbqa-ruff-format
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v6.0.0
