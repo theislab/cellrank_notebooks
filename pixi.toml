@@ -61,3 +61,4 @@ seaborn = "*"
 # Utilities
 pre-commit = "*"
 session-info2 = "*"
+cellmapper = ">=0.2.5, <0.3"
