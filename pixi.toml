@@ -42,7 +42,7 @@ scikit-learn = "<1.8"
 
 # Core single-cell stack
 scanpy = ">=1.10"
-scvelo = ">=0.3"
+scvelo = ">=0.3.4"
 moscot = ">=0.3"
 cellrank = { path = "../..", editable = true }
 pygpcca = { path = "../../../pyGPCCA", editable = true }
@@ -61,3 +61,6 @@ seaborn = "*"
 # Utilities
 pre-commit = "*"
 session-info2 = "*"
+cellmapper = ">=0.2.5, <0.3"
+adjusttext = ">=1.3.0, <2"
+igraph = ">=1.0.0, <2"
